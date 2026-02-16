@@ -9,11 +9,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  ai_edge_rag: ^0.0.1
+
   http: ^1.6.0
   flutter_svg: ^2.2.3
   smooth_page_indicator: ^2.0.1
   google_fonts: 8.0.1
+  provider: ^6.1.5+1
 
 dev_dependencies:
   flutter_test:

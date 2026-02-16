@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 
 class OnboardingPageData {
@@ -45,7 +47,7 @@ class OnboardingPageWidget extends StatelessWidget {
             ),
           ),
           
-          const SizedBox(height: 32),
+          const SizedBox(height: 12),
           
           // Icon container
           Container(
@@ -73,13 +75,13 @@ class OnboardingPageWidget extends StatelessWidget {
             ),
           ),
           
-          const SizedBox(height: 24),
+          const SizedBox(height: 22),
           
           // Subtitle
           Text(
             page.subtitle,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 12,
               fontWeight: FontWeight.w600,
               color: page.color,
               letterSpacing: 1.5,
@@ -119,7 +121,8 @@ class OnboardingPageWidget extends StatelessWidget {
           
           // Illustration container
           Container(
-            height: 220,
+            height: 210,
+            // padding: EdgeInsets.all(50),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,

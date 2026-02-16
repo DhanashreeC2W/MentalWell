@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:mentalwell_project/view/Widgets/feature_item.dart';
 import 'package:mentalwell_project/view/login_screen.dart';

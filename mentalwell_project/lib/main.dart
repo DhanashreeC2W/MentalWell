@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mentalwell_project/view/onboarding_screen.dart';
+import 'package:mentalwell_project/view/Widgets/bottom_nav_bar.dart';
 
 void main() {
   runApp(const MentalWellApp());
@@ -23,7 +23,7 @@ class MentalWellApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: const OnboardingScreen(),
+      home: const MentalWellBottomNavBar(),
     );
   }
 }

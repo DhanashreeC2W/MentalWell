@@ -1,7 +1,10 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mentalwell_project/view/Widgets/auth_text_feild.dart';
 import 'package:mentalwell_project/view/Widgets/social_auth_button.dart';
+import 'package:mentalwell_project/view/home_screen.dart';
 import 'package:mentalwell_project/view/signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -76,16 +79,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       hintText: 'Enter your email',
                       keyboardType: TextInputType.emailAddress,
                       prefixIcon: Icons.email_outlined,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your email';
-                        }
-                        if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                            .hasMatch(value)) {
-                          return 'Please enter a valid email';
-                        }
-                        return null;
-                      },
+                      // validator: (value) {
+                      //   if (value == null || value.isEmpty) {
+                      //     return 'Please enter your email';
+                      //   }
+                      //   if (!RegExp(
+                      //     r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                      //   ).hasMatch(value)) {
+                      //     return 'Please enter a valid email';
+                      //   }
+                      //   return null;
+                      // },
                     ),
 
                     const SizedBox(height: 20),
@@ -101,15 +105,15 @@ class _LoginScreenState extends State<LoginScreen> {
                           _isPasswordVisible = !_isPasswordVisible;
                         });
                       },
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your password';
-                        }
-                        if (value.length < 6) {
-                          return 'Password must be at least 6 characters';
-                        }
-                        return null;
-                      },
+                      // validator: (value) {
+                      //   if (value == null || value.isEmpty) {
+                      //     return 'Please enter your password';
+                      //   }
+                      //   if (value.length < 6) {
+                      //     return 'Password must be at least 6 characters';
+                      //   }
+                      //   return null;
+                      // },
                     ),
 
                     const SizedBox(height: 16),
@@ -179,10 +183,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Row(
                 children: [
                   Expanded(
-                    child: Divider(
-                      color: Colors.grey.shade300,
-                      thickness: 1,
-                    ),
+                    child: Divider(color: Colors.grey.shade300, thickness: 1),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -195,10 +196,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   Expanded(
-                    child: Divider(
-                      color: Colors.grey.shade300,
-                      thickness: 1,
-                    ),
+                    child: Divider(color: Colors.grey.shade300, thickness: 1),
                   ),
                 ],
               ),
@@ -301,6 +299,9 @@ class _LoginScreenState extends State<LoginScreen> {
     if (_formKey.currentState!.validate()) {
       setState(() {
         _isLoading = true;
+        Navigator.of(
+          context,
+        ).push(MaterialPageRoute(builder: (context) => HomeScreen()));
       });
 
       // Simulate API call
@@ -313,10 +314,7 @@ class _LoginScreenState extends State<LoginScreen> {
       // Show success message
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(
-            'Login successful!',
-            style: GoogleFonts.inter(),
-          ),
+          content: Text('Login successful!', style: GoogleFonts.inter()),
           backgroundColor: const Color(0xFF1B9C85),
         ),
       );
@@ -363,9 +361,7 @@ class _LoginScreenState extends State<LoginScreen> {
             children: [
               Text(
                 'Enter your email address and we\'ll send you a link to reset your password.',
-                style: GoogleFonts.inter(
-                  color: const Color(0xFF64748B),
-                ),
+                style: GoogleFonts.inter(color: const Color(0xFF64748B)),
               ),
               const SizedBox(height: 20),
               TextFormField(
@@ -384,9 +380,7 @@ class _LoginScreenState extends State<LoginScreen> {
               onPressed: () => Navigator.pop(context),
               child: Text(
                 'Cancel',
-                style: GoogleFonts.inter(
-                  color: const Color(0xFF64748B),
-                ),
+                style: GoogleFonts.inter(color: const Color(0xFF64748B)),
               ),
             ),
             ElevatedButton(
@@ -408,9 +402,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               child: Text(
                 'Send Link',
-                style: GoogleFonts.inter(
-                  fontWeight: FontWeight.w600,
-                ),
+                style: GoogleFonts.inter(fontWeight: FontWeight.w600),
               ),
             ),
           ],
