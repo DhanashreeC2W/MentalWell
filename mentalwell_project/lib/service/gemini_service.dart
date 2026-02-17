@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:http/http.dart' as http;
 
 class GeminiService {
-  final String _apiKey = "AIzaSyCdLSrLw9XUdkbI8I-f2Rkhei9JTmrPFSM";
+  final String _apiKey = "AIzaSyCqFAtAXUe7Z6uQrUPEeUKowcmMSrMF0ug";
   final String _url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
   
   // System prompt for MentalWell assistant

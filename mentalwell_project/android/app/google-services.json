@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "175790055920",
+    "project_id": "mentalwell-project",
+    "storage_bucket": "mentalwell-project.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:175790055920:android:1f6cc27d76c8b82aae3d35",
+        "android_client_info": {
+          "package_name": "com.example.mentalwell_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzKcLIIXtK4iaCtFVDij83wuxOE2K3ehA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

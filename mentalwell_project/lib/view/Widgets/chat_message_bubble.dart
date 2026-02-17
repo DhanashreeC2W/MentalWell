@@ -26,60 +26,68 @@ class ChatMessageBubble extends StatelessWidget {
           if (!message.isUser) _buildAvatar(),
           if (!message.isUser) const SizedBox(width: 12),
           
-          Flexible(
+          // Message bubble - FIXED: Removed Flexible and added constraints
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: MediaQuery.of(context).size.width * 0.7, // Max width 70% of screen
+            ),
             child: Container(
               padding: const EdgeInsets.all(16),
               decoration: _buildBubbleDecoration(),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (!message.isUser) ...[
-                    Row(
-                      children: [
-                        Text(
-                          'Serena',
-                          style: GoogleFonts.inter(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                            color: const Color(0xFF6C9EBF),
+              child: IntrinsicWidth(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (!message.isUser) ...[
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'Serena',
+                            style: GoogleFonts.inter(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                              color: const Color(0xFF6C9EBF),
+                            ),
                           ),
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
+                          const SizedBox(width: 8),
+                          Text(
+                            _formatTime(message.timestamp),
+                            style: GoogleFonts.inter(
+                              fontSize: 10,
+                              color: const Color(0xFFB0BEC5),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 6),
+                    ],
+                    Text(
+                      message.text,
+                      style: GoogleFonts.inter(
+                        fontSize: 14,
+                        height: 1.5,
+                        color: message.isUser 
+                            ? Colors.white 
+                            : (message.isError ? const Color(0xFFE57373) : const Color(0xFF2C3E50)),
+                      ),
+                    ),
+                    if (message.isUser) ...[
+                      const SizedBox(height: 4),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: Text(
                           _formatTime(message.timestamp),
                           style: GoogleFonts.inter(
                             fontSize: 10,
-                            color: const Color(0xFFB0BEC5),
+                            color: Colors.white70,
                           ),
                         ),
-                      ],
-                    ),
-                    const SizedBox(height: 6),
-                  ],
-                  Text(
-                    message.text,
-                    style: GoogleFonts.inter(
-                      fontSize: 14,
-                      height: 1.5,
-                      color: message.isUser 
-                          ? Colors.white 
-                          : (message.isError ? const Color(0xFFE57373) : const Color(0xFF2C3E50)),
-                    ),
-                  ),
-                  if (message.isUser) ...[
-                    const SizedBox(height: 4),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: Text(
-                        _formatTime(message.timestamp),
-                        style: GoogleFonts.inter(
-                          fontSize: 10,
-                          color: Colors.white70,
-                        ),
                       ),
-                    ),
+                    ],
                   ],
-                ],
+                ),
               ),
             ),
           ),

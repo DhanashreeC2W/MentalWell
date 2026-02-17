@@ -9,71 +9,64 @@ import 'widgets/ai_chat_card.dart';
 import 'widgets/mood_tracking_card.dart';
 import 'widgets/wellness_suggestions.dart';
 
-
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
   Widget build(BuildContext context) {
+    final HomeController controller = Provider.of<HomeController>(context);
     log("In Home Build");
-    return ChangeNotifierProvider(
-      create: (context) => HomeController(),
-      child: Consumer<HomeController>(
-        builder: (context, controller, child) {
-          return Scaffold(
-            backgroundColor: const Color(0xFFF8FAFC),
-            body: SafeArea(
-              child: Column(
-                children: [
-                  // Header
-                  WelcomeHeader(
-                    greeting: controller.greeting,
-                    supportiveMessage: controller.supportiveMessage,
-                    userName: 'Dhanashree', 
-                  ),
-                  
-                  // Main content (scrollable)
-                  Expanded(
-                    child: SingleChildScrollView(
-                      physics: const BouncingScrollPhysics(),
-                      child: Column(
-                        children: [
-                          // Mood selector
-                          MoodSelector(
-                            moods: controller.moods,
-                            onMoodSelected: controller.selectMood,
-                          ),
-                          
-                          // AI Chat card
-                          AiChatCard(
-                            // onTap:controller.navigateToChat,
-                          ),
-                          
-                          // Mood tracking
-                          MoodTrackingCard(
-                            weeklyData: controller.weeklyMoodData,
-                          ),
-                          
-                          // Wellness suggestions
-                          WellnessSuggestions(
-                            cards: controller.wellnessCards,
-                            onCardTap: controller.navigateToWellnessCard,
-                          ),
-                          
-                          const SizedBox(height: 20),
-                        ],
-                      ),
+    return Scaffold(
+      backgroundColor: const Color(0xFFF8FAFC),
+      body: SafeArea(
+        child: Column(
+          children: [
+            // Header
+            WelcomeHeader(
+              greeting: controller.greeting,
+              supportiveMessage: controller.supportiveMessage,
+              userName: 'Dhanashree',
+            ),
+
+            // Main content (scrollable)
+            Expanded(
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Column(
+                  children: [
+                    // Mood selector
+                    MoodSelector(
+                      moods: controller.moods,
+                      onMoodSelected: controller.selectMood,
                     ),
-                  ),
-                ],
+
+                    // AI Chat card
+                    AiChatCard(
+                      // onTap:controller.navigateToChat,
+                    ),
+
+                    // Mood tracking
+                    MoodTrackingCard(weeklyData: controller.weeklyMoodData),
+
+                    // Wellness suggestions
+                    WellnessSuggestions(
+                      cards: controller.wellnessCards,
+                      onCardTap: controller.navigateToWellnessCard,
+                    ),
+
+                    const SizedBox(height: 20),
+                  ],
+                ),
               ),
             ),
-           
-          );
-        },
+          ],
+        ),
       ),
     );
   }
-
-
 }

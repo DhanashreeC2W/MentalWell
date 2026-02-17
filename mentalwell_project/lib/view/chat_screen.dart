@@ -82,43 +82,40 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final ChatController controller = Provider.of<ChatController>(context);
     log("In chat screen build");
-    return Consumer<ChatController>(
-      builder: (context, controller, child) {
-        return Scaffold(
-          backgroundColor: const Color(0xFFF8FAFC),
-          appBar: ChatHeader(
-            onClearChat: _clearChat,
-            onBackPressed: () => Navigator.pop(context),
+    return Scaffold(
+      backgroundColor: const Color(0xFFF8FAFC),
+      appBar: ChatHeader(
+        onClearChat: _clearChat,
+        onBackPressed: () => Navigator.pop(context),
+      ),
+      body: Column(
+        children: [
+          // Chat messages
+          Expanded(
+            child: controller.hasMessages
+                ? ListView.builder(
+                    controller: _scrollController,
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    itemCount: controller.messages.length,
+                    itemBuilder: (context, index) {
+                      return ChatMessageBubble(
+                        message: controller.messages[index],
+                      );
+                    },
+                  )
+                : EmptyChatState(onSuggestionTap: _handleSuggestionTap),
           ),
-          body: Column(
-            children: [
-              // Chat messages
-              Expanded(
-                child: controller.hasMessages
-                    ? ListView.builder(
-                        controller: _scrollController,
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        itemCount: controller.messages.length,
-                        itemBuilder: (context, index) {
-                          return ChatMessageBubble(
-                            message: controller.messages[index],
-                          );
-                        },
-                      )
-                    : EmptyChatState(onSuggestionTap: _handleSuggestionTap),
-              ),
 
-              // Input field
-              ChatInputField(
-                controller: _controller,
-                isLoading: controller.isLoading,
-                onSendMessage: _handleSendMessage,
-              ),
-            ],
+          // Input field
+          ChatInputField(
+            controller: _controller,
+            isLoading: controller.isLoading,
+            onSendMessage: _handleSendMessage,
           ),
-        );
-      },
+        ],
+      ),
     );
   }
 }
