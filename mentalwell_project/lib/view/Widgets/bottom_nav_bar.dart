@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mentalwell_project/view/activity_screen.dart';
 import 'package:mentalwell_project/view/chat_screen.dart';
 import 'package:mentalwell_project/view/home_screen.dart';
 
@@ -13,7 +14,11 @@ class MentalWellBottomNavBar extends StatefulWidget {
 class _MentalWellBottomNavBarState extends State<MentalWellBottomNavBar> {
   static int _selectedScreenIndex = 0;
 
-  List<Widget> allScreensList = [const HomeScreen(), const ChatScreen()];
+  List<Widget> allScreensList = [
+    const HomeScreen(),
+    const ActivityScreen(),
+    const ChatScreen(),
+  ];
   void _onTapScreen(int index) {
     _selectedScreenIndex = index;
     setState(() {});
@@ -43,9 +48,9 @@ class _MentalWellBottomNavBarState extends State<MentalWellBottomNavBar> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.book_outlined),
-            activeIcon: Icon(Icons.book),
-            label: 'Journal',
+            icon: Icon(Icons.local_activity_outlined),
+            activeIcon: Icon(Icons.local_activity),
+            label: 'Activity',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.chat_outlined),

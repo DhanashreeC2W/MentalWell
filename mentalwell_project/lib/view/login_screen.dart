@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mentalwell_project/view/Widgets/auth_text_feild.dart';
 import 'package:mentalwell_project/view/Widgets/bottom_nav_bar.dart';
 import 'package:mentalwell_project/view/Widgets/social_auth_button.dart';
-import 'package:mentalwell_project/view/home_screen.dart';
 import 'package:mentalwell_project/view/signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
